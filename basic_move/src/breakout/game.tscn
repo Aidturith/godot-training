@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/breakout/paddle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/breakout/ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/breakout/level1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/breakout/canvas.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 200 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 176, 8 )
+
+[node name="Game" type="Node2D"]
+
+[node name="Paddle" parent="." instance=ExtResource( 1 )]
+speed = 300.0
+
+[node name="Ball" parent="." instance=ExtResource( 2 )]
+
+[node name="Canvas" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Left" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left"]
+position = Vector2( -8, 200 )
+shape = SubResource( 1 )
+
+[node name="Right" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
+position = Vector2( 348, 200 )
+shape = SubResource( 1 )
+
+[node name="Up" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Up"]
+position = Vector2( 168, -8 )
+shape = SubResource( 2 )
+
+[node name="Down" type="StaticBody2D" parent="Walls" groups=[
+"game_over",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Down"]
+position = Vector2( 168, 408 )
+shape = SubResource( 2 )
+
+[node name="Level1" parent="." instance=ExtResource( 3 )]
+
+[connection signal="dead" from="Ball" to="Canvas" method="_on_Ball_dead"]

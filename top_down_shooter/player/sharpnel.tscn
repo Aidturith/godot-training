@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/blank.png" type="Texture" id=1]
+[ext_resource path="res://player/sharpnel.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3.12848, 0.664421 )
+
+[node name="Sharpnel" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+scale = Vector2( 0.5, 0.2 )
+texture = ExtResource( 1 )
