@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=2]
+
+[ext_resource path="res://assets/enemies/slimeBlue_squashed.png" type="Texture" id=1]
+[ext_resource path="res://assets/enemies/slimeBlue.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/slimeBlue_blue.png" type="Texture" id=3]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "crawl",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "squash",
+"speed": 3.0
+} ]
