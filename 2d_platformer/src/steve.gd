@@ -6,6 +6,8 @@ const SPEED := 250
 const GRAVITY := 35
 const JUMP_FORCE := -900
 
+var projectile_factory = preload("res://scenes/Projectile.tscn")
+
 
 func _process(delta):
 	update_sprite()
@@ -28,6 +30,8 @@ func _physics_process(delta):
 		velocity.y = JUMP_FORCE
 	velocity = move_and_slide(velocity, Vector2.UP)
 	velocity.x = lerp(velocity.x, .0, .2)
+	if Input.is_action_just_pressed("fire"):
+		fire()
 	
 
 func update_sprite() -> void:
@@ -61,8 +65,23 @@ func ouch(enemy_pos_x: float) -> void:
 	$AnimationPlayer.play("ouch")
 	Input.action_release("move_left")
 	Input.action_release("move_right")
-	$Timer.start()
+	$Dead.start()
 
 
-func _on_Timer_timeout():
+func get_direction():
+	if $Sprite.flip_h:
+		return -1
+	else:
+		return 1
+
+func fire():
+	if $FireRate.time_left == 0:
+		var projectile = projectile_factory.instance()
+		projectile.position = global_position
+		projectile.direction = get_direction()
+		get_tree().current_scene.add_child(projectile)
+		$FireRate.start()
+
+
+func _on_Dead_timeout():
 	get_tree().change_scene("res://scenes/Level1.tscn")

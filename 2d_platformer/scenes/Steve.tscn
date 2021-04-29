@@ -23,7 +23,9 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.501961, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.501961, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="Steve" type="KinematicBody2D"]
+[node name="Steve" type="KinematicBody2D" groups=[
+"player",
+]]
 collision_mask = 30
 script = ExtResource( 2 )
 __meta__ = {
@@ -47,7 +49,11 @@ pitch_scale = 0.65
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/ouch = SubResource( 2 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Dead" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[node name="FireRate" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Dead" to="." method="_on_Dead_timeout"]

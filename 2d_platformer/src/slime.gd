@@ -36,6 +36,14 @@ func update_floor_checker():
 
 
 func _on_TopChecker_body_entered(body):
+	if body.is_in_group("player"):
+		squashed()
+		body.bounce()
+	elif body.is_in_group("projectile"):
+		squashed()
+		
+
+func squashed():
 	speed = 0
 	$AnimatedSprite.play("squash")
 	$SfxSquash.play()
@@ -46,7 +54,6 @@ func _on_TopChecker_body_entered(body):
 	$SideChecker.set_collision_layer_bit(4, false)
 	$SideChecker.set_collision_mask_bit(0, false)
 	$Disappear.start()
-	body.bounce()
 
 
 func _on_Disappear_timeout():
@@ -54,5 +61,6 @@ func _on_Disappear_timeout():
 
 
 func _on_SideChecker_body_entered(body):
-	body.ouch(position.x)
+	if body.is_in_group("player"):
+		body.ouch(position.x)
 

@@ -26,7 +26,6 @@ position = Vector2( 0, -4.17233e-07 )
 scale = Vector2( 1, 0.941176 )
 frames = ExtResource( 2 )
 animation = "crawl"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
