@@ -45,7 +45,7 @@ func update_sprite() -> void:
 
 func _on_FallZone_body_entered():
 	print("fall")
-	get_tree().change_scene("res://src/Level1.tscn")
+	get_tree().change_scene("res://scenes/Level1.tscn")
 
 
 func bounce():
@@ -65,4 +65,4 @@ func ouch(enemy_pos_x: float) -> void:
 
 
 func _on_Timer_timeout():
-	get_tree().change_scene("res://src/Level1.tscn")
+	get_tree().change_scene("res://scenes/Level1.tscn")
