@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/slime.gd" type="Script" id=1]
-[ext_resource path="res://src/SlimeFrames.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://ressources/SlimeFrames.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://assets/sfx/squash.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -26,6 +26,7 @@ position = Vector2( 0, -4.17233e-07 )
 scale = Vector2( 1, 0.941176 )
 frames = ExtResource( 2 )
 animation = "crawl"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

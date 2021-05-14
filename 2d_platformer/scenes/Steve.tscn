@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/steve_frames.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://ressources/steve_frames.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://src/steve.gd" type="Script" id=2]
 [ext_resource path="res://assets/sfx/jump.wav" type="AudioStream" id=3]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 24.0
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24, 31 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "ouch"
@@ -38,7 +38,7 @@ animation = "idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 15 )
+position = Vector2( 0, 16 )
 shape = SubResource( 1 )
 
 [node name="SfxJump" type="AudioStreamPlayer2D" parent="."]
