@@ -1,0 +1,42 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "SpiralIterator",
+"language": "GDScript",
+"path": "res://src/world/SpiralIterator.gd"
+}, {
+"base": "Reference",
+"class": "Voronoi",
+"language": "GDScript",
+"path": "res://src/world/Voronoi.gd"
+} ]
+_global_script_class_icons={
+"SpiralIterator": "",
+"Voronoi": ""
+}
+
+[application]
+
+config/name="LoZ Generator"
+run/main_scene="res://scenes/World.tscn"
+config/icon="res://icon.png"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
